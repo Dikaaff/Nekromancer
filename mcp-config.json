@@ -1,0 +1,29 @@
+{
+  "_note": "Copy contents ke .kiro/settings/mcp.json untuk aktifkan MCP servers di Kiro IDE",
+  "mcpServers": {
+    "artifact-lab": {
+      "command": "python",
+      "args": ["mcp/artifact-lab/server.py"],
+      "cwd": "${workspaceFolder}",
+      "description": "Runs artifact probe in headless sandbox, returns structured trace"
+    },
+    "provenance-ledger": {
+      "command": "python",
+      "args": ["mcp/provenance-ledger/server.py"],
+      "cwd": "${workspaceFolder}",
+      "description": "Read and verify provenance ledger chain"
+    },
+    "screenshot-parity": {
+      "command": "python",
+      "args": ["mcp/screenshot-parity/server.py"],
+      "cwd": "${workspaceFolder}",
+      "description": "Compare screenshots for visual parity testing"
+    },
+    "crew-bridge": {
+      "command": "python",
+      "args": ["mcp/crew-bridge/server.py"],
+      "cwd": "${workspaceFolder}",
+      "description": "Orchestrate pipeline runs, manage gates, budget tracking"
+    }
+  }
+}

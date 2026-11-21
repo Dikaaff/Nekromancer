@@ -1,0 +1,11 @@
+id,nama,kota,telepon,email,tahun_bergabung
+1,Budi Santoso,Jakarta,021-5551234,budi@example.com,1998
+2,Siti Rahayu,Bandung,022-5559876,siti@example.com,1999
+3,Ahmad Fauzi,Surabaya,031-5554321,ahmad@example.com,1997
+4,Dewi Lestari,Yogyakarta,0274-555789,dewi@example.com,2000
+5,Rudi Hermawan,Medan,061-5556543,rudi@example.com,1996
+6,Rina Susanti,Semarang,024-5552109,rina@example.com,1998
+7,Hendra Gunawan,Makassar,0411-555876,hendra@example.com,2001
+8,Yuni Pratiwi,Palembang,0711-555234,yuni@example.com,1999
+9,Doni Kurniawan,Pekanbaru,0761-555678,doni@example.com,2000
+10,Lia Anggraeni,Balikpapan,0542-555123,lia@example.com,1997

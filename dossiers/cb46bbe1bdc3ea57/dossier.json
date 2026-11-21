@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0",
+  "artifact": {
+    "id": "cb46bbe1bdc3ea57",
+    "sha256": "cb46bbe1bdc3ea57d756b6526a7bbfc7ec2fe4b04e11a5c5a80c80d3ff2db32e",
+    "size": 707,
+    "name": "sample_inventory.csv"
+  },
+  "format": {
+    "family": "csv",
+    "detected_by": "delimiter_heuristic",
+    "confidence": 0.8,
+    "encoding": "utf-8",
+    "delimiter": ","
+  },
+  "structure": [
+    {
+      "record": "row",
+      "field": "kode_barang",
+      "type": "string",
+      "byte_offset": 0,
+      "nullable": false
+    },
+    {
+      "record": "row",
+      "field": "nama_barang",
+      "type": "string",
+      "byte_offset": 0,
+      "nullable": false
+    },
+    {
+      "record": "row",
+      "field": "kategori",
+      "type": "string",
+      "byte_offset": 0,
+      "nullable": false
+    },
+    {
+      "record": "row",
+      "field": "stok",
+      "type": "integer",
+      "byte_offset": 0,
+      "nullable": false
+    },
+    {
+      "record": "row",
+      "field": "harga_satuan",
+      "type": "integer",
+      "byte_offset": 0,
+      "nullable": false
+    },
+    {
+      "record": "row",
+      "field": "supplier",
+      "type": "string",
+      "byte_offset": 0,
+      "nullable": false
+    },
+    {
+      "record": "row",
+      "field": "tanggal_masuk",
+      "type": "date",
+      "byte_offset": 0,
+      "nullable": false
+    }
+  ],
+  "samples": [
+    {
+      "kode_barang": "B001",
+      "nama_barang": "Kertas HVS A4",
+      "kategori": "ATK",
+      "stok": "500",
+      "harga_satuan": "45000",
+      "supplier": "CV Maju Jaya",
+      "tanggal_masuk": "19980115"
+    },
+    {
+      "kode_barang": "B002",
+      "nama_barang": "Pulpen Pilot",
+      "kategori": "ATK",
+      "stok": "200",
+      "harga_satuan": "3500",
+      "supplier": "PT Alat Tulis",
+      "tanggal_masuk": "19980120"
+    },
+    {
+      "kode_barang": "B003",
+      "nama_barang": "Komputer 486",
+      "kategori": "Elektronik",
+      "stok": "5",
+      "harga_satuan": "2500000",
+      "supplier": "CV Komputer Nusantara",
+      "tanggal_masuk": "19970310"
+    },
+    {
+      "kode_barang": "B004",
+      "nama_barang": "Monitor CRT 14&quot;",
+      "kategori": "Elektronik",
+      "stok": "8",
+      "harga_satuan": "750000",
+      "supplier": "CV Komputer Nusantara",
+      "tanggal_masuk": "19970310"
+    },
+    {
+      "kode_barang": "B005",
+      "nama_barang": "Disket 3.5&quot;",
+      "kategori": "Media",
+      "stok": "1000",
+      "harga_satuan": "2500",
+      "supplier": "CV Media Komputer",
+      "tanggal_masuk": "19980101"
+    },
+    {
+      "kode_barang": "B006",
+      "nama_barang": "Ribbon Dot Matrix",
+      "kategori": "Printer",
+      "stok": "50",
+      "harga_satuan": "35000",
+      "supplier": "PT Printer Jaya",
+      "tanggal_masuk": "19980205"
+    },
+    {
+      "kode_barang": "B007",
+      "nama_barang": "Tinta Printer HP",
+      "kategori": "Printer",
+      "stok": "30",
+      "harga_satuan": "125000",
+      "supplier": "PT Printer Jaya",
+      "tanggal_masuk": "19990101"
+    },
+    {
+      "kode_barang": "B008",
+      "nama_barang": "Lemari Arsip",
+      "kategori": "Furnitur",
+      "stok": "10",
+      "harga_satuan": "450000",
+      "supplier": "CV Furnitur Kantor",
+      "tanggal_masuk": "19980601"
+    },
+    {
+      "kode_barang": "B009",
+      "nama_barang": "Meja Kerja",
+      "kategori": "Furnitur",
+      "stok": "15",
+      "harga_satuan": "350000",
+      "supplier": "CV Furnitur Kantor",
+      "tanggal_masuk": "19980601"
+    },
+    {
+      "kode_barang": "B010",
+      "nama_barang": "Kursi Putar",
+      "kategori": "Furnitur",
+      "stok": "20",
+      "harga_satuan": "275000",
+      "supplier": "CV Furnitur Kantor",
+      "tanggal_masuk": "19990201"
+    }
+  ],
+  "unresolved": [],
+  "warnings": [],
+  "_meta": {
+    "probe_elapsed_seconds": 0.004,
+    "timestamp": "2026-11-20T17:07:40Z"
+  }
+}

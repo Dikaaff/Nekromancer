@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "44bcc0c95acee61e",
+  "format": "csv",
+  "sequences_run": 1000,
+  "seed": 42,
+  "elapsed_seconds": 0.29,
+  "properties": [
+    {
+      "name": "P1_sequences_run",
+      "status": "pass",
+      "sequences_run": 1000,
+      "required": 1000
+    },
+    {
+      "name": "CSV-parity",
+      "status": "pass",
+      "failures": 0
+    }
+  ],
+  "counterexamples": [],
+  "normalization_policy": {
+    "ignore_presentation_differences": true,
+    "ignore_whitespace_differences": true,
+    "ignore_column_order": false,
+    "date_format_normalize": true
+  },
+  "timestamp": "2026-11-20T17:05:56Z"
+}

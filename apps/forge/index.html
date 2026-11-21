@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:">
+  <title>NEKROMANCER Forge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header role="banner">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">🔮</span>
+        <span class="brand-name">NEKROMANCER</span>
+        <span class="brand-sub">Forge</span>
+      </div>
+      <div class="header-meta">
+        <span id="run-count" aria-live="polite"></span>
+        <kbd class="hint">1-3: switch tabs</kbd>
+        <kbd class="hint">↑↓: navigate runs</kbd>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout" id="main">
+    <!-- Run List -->
+    <nav class="run-list" aria-label="Artifact runs">
+      <div class="run-list-header">
+        <h2>Runs</h2>
+        <button id="refresh-btn" class="btn-icon" aria-label="Refresh run list" title="Refresh">↻</button>
+      </div>
+      <ul id="run-list" role="list" aria-label="Artifact run list">
+        <li class="run-placeholder">Loading runs…</li>
+      </ul>
+    </nav>
+
+    <!-- Detail Panel -->
+    <main class="detail-panel" aria-label="Run detail">
+      <div id="no-selection" class="empty-state">
+        <p>Select a run to view details</p>
+        <p class="hint">Use ↑↓ arrow keys to navigate</p>
+      </div>
+
+      <div id="detail-content" hidden>
+        <div class="detail-header">
+          <h1 id="detail-title"></h1>
+          <div class="detail-badges">
+            <span id="detail-status" class="badge"></span>
+            <span id="detail-format" class="badge badge-format"></span>
+          </div>
+          <div class="detail-actions">
+            <a id="link-restored" href="#" class="btn" aria-label="Open restored application">
+              🌐 Open Restored App
+            </a>
+            <a id="link-parity" href="#" class="btn btn-secondary" download aria-label="Download parity report">
+              📊 Parity Report
+            </a>
+          </div>
+          <div id="gate-panel" class="gate-panel" hidden>
+            <p class="gate-message">⛩ Gate 2: Awaiting approval before commit</p>
+            <button id="approve-btn" class="btn btn-success">✅ Approve</button>
+            <button id="reject-btn" class="btn btn-danger">❌ Reject</button>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs" role="tablist" aria-label="Run detail tabs">
+          <button role="tab" id="tab-dossier"  aria-selected="true"  aria-controls="panel-dossier"  class="tab active">Dossier</button>
+          <button role="tab" id="tab-parity"   aria-selected="false" aria-controls="panel-parity"   class="tab">Parity</button>
+          <button role="tab" id="tab-ledger"   aria-selected="false" aria-controls="panel-ledger"   class="tab">Ledger</button>
+        </div>
+
+        <!-- Tab: Dossier -->
+        <div role="tabpanel" id="panel-dossier" aria-labelledby="tab-dossier" class="tab-panel">
+          <section aria-label="Artifact information">
+            <h3>Artifact</h3>
+            <dl class="info-grid">
+              <dt>Name</dt>     <dd id="d-name"></dd>
+              <dt>SHA-256</dt>  <dd id="d-sha256" class="mono"></dd>
+              <dt>Size</dt>     <dd id="d-size"></dd>
+              <dt>Format</dt>   <dd id="d-format"></dd>
+              <dt>Confidence</dt><dd id="d-confidence"></dd>
+              <dt>Detected by</dt><dd id="d-detected-by"></dd>
+            </dl>
+          </section>
+
+          <section aria-label="Field structure">
+            <h3>Structure (<span id="d-field-count">0</span> fields)</h3>
+            <div class="table-wrapper" tabindex="0" role="region" aria-label="Field structure">
+              <table id="structure-table" aria-label="Artifact field structure">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Field</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Nullable</th>
+                    <th scope="col">Offset</th>
+                  </tr>
+                </thead>
+                <tbody id="structure-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section aria-label="Warnings and unresolved">
+            <div id="warnings-section" hidden>
+              <h3>Warnings</h3>
+              <ul id="warnings-list" role="list" class="warn-list"></ul>
+            </div>
+            <div id="unresolved-section" hidden>
+              <h3>Unresolved</h3>
+              <ul id="unresolved-list" role="list" class="error-list"></ul>
+            </div>
+          </section>
+        </div>
+
+        <!-- Tab: Parity -->
+        <div role="tabpanel" id="panel-parity" aria-labelledby="tab-parity" class="tab-panel" hidden>
+          <section aria-label="Parity results">
+            <h3>Parity Report</h3>
+            <dl class="info-grid">
+              <dt>Sequences run</dt>  <dd id="p-sequences"></dd>
+              <dt>Seed</dt>           <dd id="p-seed" class="mono"></dd>
+              <dt>Elapsed</dt>        <dd id="p-elapsed"></dd>
+              <dt>Norm. policy</dt>   <dd id="p-policy"></dd>
+            </dl>
+          </section>
+
+          <section aria-label="Property results">
+            <h3>Properties</h3>
+            <ul id="properties-list" role="list" class="prop-list"></ul>
+          </section>
+
+          <section aria-label="Counterexamples" id="counterexamples-section" hidden>
+            <h3>Counterexamples</h3>
+            <ul id="counterexamples-list" role="list" class="error-list"></ul>
+          </section>
+        </div>
+
+        <!-- Tab: Ledger -->
+        <div role="tabpanel" id="panel-ledger" aria-labelledby="tab-ledger" class="tab-panel" hidden>
+          <section aria-label="Provenance ledger">
+            <h3>Ledger Entries</h3>
+            <p class="hint" id="ledger-chain-status"></p>
+            <div class="table-wrapper" tabindex="0" role="region" aria-label="Ledger entries">
+              <table id="ledger-table" aria-label="Provenance ledger">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Stage</th>
+                    <th scope="col">Actor</th>
+                    <th scope="col">Timestamp</th>
+                    <th scope="col">Output Hash</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <p>NEKROMANCER Forge — <em>sesuatu yang terkubur tidak harus tetap terkubur</em></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

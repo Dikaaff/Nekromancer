@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "artifact": {
+    "id": "0a360276134f52b4",
+    "sha256": "0a360276134f52b4ee82e8513c3a7042592f000cc663a9869540960a4eaf16c6",
+    "size": 11,
+    "name": "tmpko1ykdg9.bin"
+  },
+  "format": {
+    "family": "dbf",
+    "detected_by": "magic_bytes",
+    "confidence": 0.92,
+    "encoding": "cp1252",
+    "delimiter": ""
+  },
+  "structure": [],
+  "samples": [],
+  "unresolved": [
+    {
+      "code": "DBF_HEADER_INVALID",
+      "message": "Cannot read DBF header"
+    }
+  ],
+  "warnings": [],
+  "_meta": {
+    "probe_elapsed_seconds": 0.05,
+    "timestamp": "2026-11-21T00:57:32Z"
+  }
+}

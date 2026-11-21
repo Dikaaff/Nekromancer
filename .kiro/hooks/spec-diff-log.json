@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Spec Diff Log on Stop",
+      "trigger": "Stop",
+      "description": "Saat sesi berakhir, generate changelog dan saran pesan commit dari selisih spec. Memastikan disiplin commit terdokumentasi dari spec, bukan dari ingatan.",
+      "action": {
+        "type": "command",
+        "command": "python .kiro/scripts/spec_diff_log.py 2>&1",
+        "timeout": 30
+      }
+    }
+  ]
+}

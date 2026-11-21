@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Ledger Append on Task Complete",
+      "trigger": "PostTaskExec",
+      "description": "Tambahkan entri ledger dengan hash setiap kali sebuah task spec selesai. Memastikan rantai provenans tidak pernah terlewat ditulis.",
+      "action": {
+        "type": "command",
+        "command": "python packages/ledger/writer.py --event post-task --stdin 2>&1",
+        "timeout": 15
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+schema_version: '1.0'
+artifact_id: cb46bbe1bdc3ea57
+artifact_name: sample_inventory.csv
+format: csv
+entities:
+- name: sample_inventory
+  source: dossier.json#structure
+  fields:
+  - name: kode_barang
+    type: string
+    nullable: false
+    label: Kode Barang
+    cite: dossier.json#structure[0]
+  - name: nama_barang
+    type: string
+    nullable: false
+    label: Nama Barang
+    cite: dossier.json#structure[1]
+  - name: kategori
+    type: string
+    nullable: false
+    label: Kategori
+    cite: dossier.json#structure[2]
+  - name: stok
+    type: integer
+    nullable: false
+    label: Stok
+    cite: dossier.json#structure[3]
+  - name: harga_satuan
+    type: integer
+    nullable: false
+    label: Harga Satuan
+    cite: dossier.json#structure[4]
+  - name: supplier
+    type: string
+    nullable: false
+    label: Supplier
+    cite: dossier.json#structure[5]
+  - name: tanggal_masuk
+    type: date
+    nullable: false
+    label: Tanggal Masuk
+    cite: dossier.json#structure[6]
+screens:
+- id: list
+  title: sample_inventory List
+  type: table
+  entity: sample_inventory
+  columns:
+  - kode_barang
+  - nama_barang
+  - kategori
+  - stok
+  - harga_satuan
+  - supplier
+  - tanggal_masuk
+  cite: dossier.json#structure[0..6]
+- id: detail
+  title: sample_inventory Detail
+  type: form
+  entity: sample_inventory
+  fields:
+  - kode_barang
+  - nama_barang
+  - kategori
+  - stok
+  - harga_satuan
+  - supplier
+  - tanggal_masuk
+  cite: dossier.json#structure[0..6]
+rules:
+- field: stok
+  rule: format_number
+  cite: dossier.json#structure[3]
+- field: harga_satuan
+  rule: format_number
+  cite: dossier.json#structure[4]
+- field: tanggal_masuk
+  rule: format_date
+  cite: dossier.json#structure[6]
+unresolved: []

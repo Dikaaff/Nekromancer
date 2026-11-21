@@ -1,0 +1,11 @@
+kode_barang,nama_barang,kategori,stok,harga_satuan,supplier,tanggal_masuk
+B001,Kertas HVS A4,ATK,500,45000,CV Maju Jaya,19980115
+B002,Pulpen Pilot,ATK,200,3500,PT Alat Tulis,19980120
+B003,Komputer 486,Elektronik,5,2500000,CV Komputer Nusantara,19970310
+B004,Monitor CRT 14",Elektronik,8,750000,CV Komputer Nusantara,19970310
+B005,Disket 3.5",Media,1000,2500,CV Media Komputer,19980101
+B006,Ribbon Dot Matrix,Printer,50,35000,PT Printer Jaya,19980205
+B007,Tinta Printer HP,Printer,30,125000,PT Printer Jaya,19990101
+B008,Lemari Arsip,Furnitur,10,450000,CV Furnitur Kantor,19980601
+B009,Meja Kerja,Furnitur,15,350000,CV Furnitur Kantor,19980601
+B010,Kursi Putar,Furnitur,20,275000,CV Furnitur Kantor,19990201

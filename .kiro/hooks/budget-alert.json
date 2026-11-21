@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Budget Alert on Tool Use",
+      "trigger": "PostToolUse",
+      "description": "Hitung kredit yang terpakai setelah setiap tool call. Hentikan seluruh run bila > 300 kredit. Kill semua sesi Crew bila > 400. Mencegah denial-of-wallet.",
+      "action": {
+        "type": "command",
+        "command": "python mcp/crew-bridge/budget.py --check-after-tool --stdin 2>&1",
+        "timeout": 5
+      }
+    }
+  ]
+}

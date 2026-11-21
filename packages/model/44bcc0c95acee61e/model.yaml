@@ -1,0 +1,71 @@
+schema_version: '1.0'
+artifact_id: 44bcc0c95acee61e
+artifact_name: sample_contacts.csv
+format: csv
+entities:
+- name: sample_contacts
+  source: dossier.json#structure
+  fields:
+  - name: id
+    type: integer
+    nullable: false
+    label: Id
+    cite: dossier.json#structure[0]
+  - name: nama
+    type: string
+    nullable: false
+    label: Nama
+    cite: dossier.json#structure[1]
+  - name: kota
+    type: string
+    nullable: false
+    label: Kota
+    cite: dossier.json#structure[2]
+  - name: telepon
+    type: string
+    nullable: false
+    label: Telepon
+    cite: dossier.json#structure[3]
+  - name: email
+    type: string
+    nullable: false
+    label: Email
+    cite: dossier.json#structure[4]
+  - name: tahun_bergabung
+    type: integer
+    nullable: false
+    label: Tahun Bergabung
+    cite: dossier.json#structure[5]
+screens:
+- id: list
+  title: sample_contacts List
+  type: table
+  entity: sample_contacts
+  columns:
+  - id
+  - nama
+  - kota
+  - telepon
+  - email
+  - tahun_bergabung
+  cite: dossier.json#structure[0..5]
+- id: detail
+  title: sample_contacts Detail
+  type: form
+  entity: sample_contacts
+  fields:
+  - id
+  - nama
+  - kota
+  - telepon
+  - email
+  - tahun_bergabung
+  cite: dossier.json#structure[0..5]
+rules:
+- field: id
+  rule: format_number
+  cite: dossier.json#structure[0]
+- field: tahun_bergabung
+  rule: format_number
+  cite: dossier.json#structure[5]
+unresolved: []

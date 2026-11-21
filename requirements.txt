@@ -1,0 +1,16 @@
+# NEKROMANCER Python dependencies
+# Pinned versions for supply-chain security (S-12)
+
+# Core
+jsonschema==4.23.0
+pyyaml==6.0.2
+
+# Testing
+hypothesis==6.112.2
+pytest==8.3.3
+
+# Optional (screenshot parity)
+Pillow==10.4.0
+
+# Security scanning
+# pip-audit is run in CI, not listed here as runtime dep

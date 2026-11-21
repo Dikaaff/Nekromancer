@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+venv/
+.venv/
+ENV/
+
+# Secrets — NEVER commit these
+.env
+.env.*
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# Fixtures — real artifacts stay local
+fixtures/drop/
+fixtures/real/
+# synthetic fixtures ARE committed
+!fixtures/synthetic/
+
+# Build artifacts
+apps/restored/*/
+!apps/restored/.gitkeep
+
+# Evidence — large files
+evidence/*/screenshots/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Logs
+*.log
+logs/
+
+# uv / pip
+uv.lock
+*.whl
