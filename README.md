@@ -8,7 +8,7 @@ Built for **Kiroween 2026** · Category: **Resurrection** · Built with **Kiro**
 
 | | |
 |---|---|
-| **Live demos** | [Forge UI](apps/forge/) · [Restored: contacts](apps/restored/44bcc0c95acee61e/) · [Restored: inventory](apps/restored/cb46bbe1bdc3ea57/) |
+| **Live demos** | [Landing](https://dikaaff.github.io/Nekromancer/) · [Forge UI](https://dikaaff.github.io/Nekromancer/apps/forge/) · [Restored: contacts](https://dikaaff.github.io/Nekromancer/apps/restored/44bcc0c95acee61e/) · [Restored: inventory](https://dikaaff.github.io/Nekromancer/apps/restored/cb46bbe1bdc3ea57/) |
 | **Kiro write-up** | [docs/kiro-writeup.md](docs/kiro-writeup.md) |
 | **Submission notes** | [docs/devpost-submission.md](docs/devpost-submission.md) |
 | **Status** | Hackathon build — data-model parity is real; pixel parity is partial (see [Limitations](#limitations)) |

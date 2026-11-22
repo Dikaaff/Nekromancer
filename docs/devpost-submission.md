@@ -10,7 +10,7 @@ Copy the relevant blocks into the Devpost form. Replace every `TODO` before subm
 - **Tagline:** Dead data should not stay dead — and a restoration should be provable.
 - **Category:** Resurrection
 - **Repo:** https://github.com/Dikaaff/Nekromancer
-- **Demo URL:** `TODO` — GitHub Pages root (Forge UI + both restored apps)
+- **Demo URL:** https://dikaaff.github.io/Nekromancer/ (landing page → Forge console + both restored apps)
 - **Video:** `TODO` — YouTube, public, under 3 minutes
 - **Blog post:** `TODO`
 - **Social post:** `TODO`
