@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "artifact-lab": {
+      "command": "python",
+      "args": ["mcp/artifact-lab/server.py"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "provenance-ledger": {
+      "command": "python",
+      "args": ["mcp/provenance-ledger/server.py"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "screenshot-parity": {
+      "command": "python",
+      "args": ["mcp/screenshot-parity/server.py"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "crew-bridge": {
+      "command": "python",
+      "args": ["mcp/crew-bridge/server.py"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

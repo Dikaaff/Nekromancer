@@ -1,6 +1,17 @@
 ---
 name: PALEOGRAPHER
 description: Susun model semantik dari dossier dengan sitasi per elemen
+tools: ["read", "write", "@provenance-ledger"]
+includeMcpJson: true
+permissions:
+  rules:
+    - capability: fs_write
+      match: ["packages/model/**", "dossiers/**"]
+      effect: allow
+    - capability: fs_write
+      match: ["ledger/**", "apps/**", "evidence/**", "packages/probe/**",
+              "packages/synth/**", "packages/parity/**"]
+      effect: deny
 ---
 
 # PALEOGRAPHER

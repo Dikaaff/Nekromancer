@@ -1,6 +1,16 @@
 ---
 name: SEXTON
-description: Jaga integritas ledger provenans — hanya append, tidak pernah edit
+tools: ["read", "write", "@provenance-ledger"]
+includeMcpJson: true
+permissions:
+  rules:
+    - capability: fs_write
+      match: ["ledger/**"]
+      effect: allow
+    - capability: fs_write
+      match: ["apps/**", "packages/**", "dossiers/**", "evidence/**", "fixtures/**"]
+      effect: deny
+description: Jaga integritas ledger provenans - hanya append, tidak pernah edit
 ---
 
 # SEXTON

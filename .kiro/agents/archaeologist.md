@@ -1,6 +1,17 @@
 ---
 name: ARCHAEOLOGIST
 description: Deteksi format artefak digital, orchestrate sandbox probe, hasilkan dossier awal
+tools: ["read", "write", "shell", "@artifact-lab"]
+includeMcpJson: true
+permissions:
+  rules:
+    - capability: fs_write
+      match: ["packages/probe/**", "packages/codec/**"]
+      effect: allow
+    - capability: fs_write
+      match: ["ledger/**", "dossiers/**", "apps/**", "evidence/**",
+              "packages/parity/**", "packages/synth/**", "packages/model/**"]
+      effect: deny
 ---
 
 # ARCHAEOLOGIST

@@ -1,6 +1,17 @@
 ---
 name: REVENANT
 description: Verifikasi paritas perilaku antara artefak asli dan aplikasi hasil restorasi
+tools: ["read", "write", "shell", "@artifact-lab", "@screenshot-parity"]
+includeMcpJson: true
+permissions:
+  rules:
+    - capability: fs_write
+      match: ["packages/parity/**", "evidence/**"]
+      effect: allow
+    - capability: fs_write
+      match: ["apps/**", "ledger/**", "dossiers/**", "packages/synth/**",
+              "packages/probe/**", "packages/model/**"]
+      effect: deny
 ---
 
 # REVENANT

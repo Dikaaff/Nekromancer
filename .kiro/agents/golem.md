@@ -1,6 +1,16 @@
 ---
 name: GOLEM
 description: Sintesis aplikasi statis dari model semantik menggunakan template deterministik
+tools: ["read", "write", "shell"]
+includeMcpJson: true
+permissions:
+  rules:
+    - capability: fs_write
+      match: ["packages/synth/**", "apps/restored/**", "apps/forge/**"]
+      effect: allow
+    - capability: fs_write
+      match: ["packages/parity/**", "ledger/**", "dossiers/**", "evidence/**"]
+      effect: deny
 ---
 
 # GOLEM

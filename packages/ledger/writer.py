@@ -128,30 +128,32 @@ def _handle_chain_break(
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Append ledger entry")
-    parser.add_argument("--stage", required=True)
+    parser.add_argument("--stage", help="Stage name (defaults to the hook event)")
     parser.add_argument("--input-hash", default="0" * 64)
-    parser.add_argument("--output", required=True, help="Content to hash as output")
-    parser.add_argument("--actor", required=True)
+    parser.add_argument("--output", help="Content to hash as output")
+    parser.add_argument("--actor", help="Actor name (defaults to the payload agent)")
     parser.add_argument("--event", help="Event type from hook (post-task etc.)")
     parser.add_argument("--stdin", action="store_true", help="Read JSON from stdin (hook mode)")
     args = parser.parse_args()
 
+    payload = {}
     if args.stdin:
-        try:
-            payload = json.loads(sys.stdin.read())
-            stage = payload.get("task", {}).get("id", args.stage)
-            actor = payload.get("agent", args.actor)
-        except Exception:
-            stage = args.stage
-            actor = args.actor
-    else:
-        stage = args.stage
-        actor = args.actor
+        raw = sys.stdin.read()
+        if raw.strip():
+            try:
+                payload = json.loads(raw)
+            except json.JSONDecodeError:
+                payload = {"raw": raw}
+
+    # Hook mode derives whatever the payload can supply; CLI mode uses flags.
+    stage = args.stage or payload.get("task", {}).get("id") or args.event or "hook"
+    actor = args.actor or payload.get("agent") or "SEXTON"
+    output = args.output if args.output is not None else json.dumps(payload, sort_keys=True, default=str)
 
     entry = append_entry(
         stage=stage,
         input_hash=args.input_hash,
-        output_content=args.output,
+        output_content=output,
         actor=actor,
     )
     print(json.dumps(entry, indent=2))

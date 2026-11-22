@@ -7,9 +7,9 @@
       "description": "Tambahkan entri ledger dengan hash setiap kali sebuah task spec selesai. Memastikan rantai provenans tidak pernah terlewat ditulis.",
       "action": {
         "type": "command",
-        "command": "python packages/ledger/writer.py --event post-task --stdin 2>&1",
-        "timeout": 15
-      }
+        "command": "python packages/ledger/writer.py --event post-task --stdin 2>&1"
+      },
+      "timeout": 15
     }
   ]
 }

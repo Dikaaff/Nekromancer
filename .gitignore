@@ -12,6 +12,10 @@ venv/
 .venv/
 ENV/
 
+# Test tooling
+.pytest_cache/
+.hypothesis/
+
 # Secrets — NEVER commit these
 .env
 .env.*
@@ -26,12 +30,14 @@ fixtures/real/
 # synthetic fixtures ARE committed
 !fixtures/synthetic/
 
-# Build artifacts
-apps/restored/*/
-!apps/restored/.gitkeep
+# Build artifacts — restored apps are committed as the demo surface
+# (remove this exception if you only want to ship the generator)
 
 # Evidence — large files
 evidence/*/screenshots/
+
+# Kiro runtime state (hook counters)
+.kiro/state/
 
 # IDE
 .vscode/

@@ -5,12 +5,12 @@
       "name": "Analyze Artifact on Create",
       "trigger": "PostFileCreate",
       "description": "Jalankan probe + smoke test otomatis setiap kali file baru ditambahkan ke fixtures/. Memastikan parser tidak rusak saat kontrak dossier berubah.",
-      "matcher": "fixtures/",
+      "matcher": "fixtures[\\\\/]",
       "action": {
         "type": "command",
-        "command": "python packages/probe/runner.py --artifact \"$KIRO_FILE_PATH\" --smoke-test 2>&1",
-        "timeout": 130
-      }
+        "command": "python packages/probe/runner.py \"{{filePath}}\" --smoke-test 2>&1"
+      },
+      "timeout": 130
     }
   ]
 }

@@ -1,6 +1,13 @@
 ---
 name: WATCHER
-description: Orchestrator kru — koordinasikan agen, jadwalkan run, ajukan persetujuan manusia
+tools: ["read", "@crew-bridge"]
+includeMcpJson: true
+permissions:
+  rules:
+    - capability: fs_write
+      match: ["**"]
+      effect: deny
+description: Orchestrator kru - koordinasikan agen, jadwalkan run, ajukan persetujuan manusia
 ---
 
 # WATCHER
