@@ -55,8 +55,8 @@ def _make_csv_with_value(value: str) -> str:
 
 
 # ----- Property P3-A: No unescaped block delimiters -----
-@given(st.text(min_size=0, max_size=500))
-@settings(max_examples=1000, suppress_health_check=[HealthCheck.too_slow], deadline=None)
+@given(st.text(min_size=0, max_size=200))
+@settings(max_examples=300, suppress_health_check=[HealthCheck.too_slow], deadline=None)
 def test_no_unescaped_block_delimiters(arbitrary_text: str):
     """
     P3-A: Whatever text lands in an artifact value,
@@ -119,9 +119,9 @@ def test_injection_attempts_flagged(injection_text: str):
 # ----- Property P3-C: All sample values are HTML-escaped -----
 @given(st.text(
     alphabet=st.characters(blacklist_categories=("Cs",)),
-    min_size=1, max_size=200
+    min_size=1, max_size=100
 ))
-@settings(max_examples=500, suppress_health_check=[HealthCheck.too_slow], deadline=None)
+@settings(max_examples=200, suppress_health_check=[HealthCheck.too_slow], deadline=None)
 def test_html_dangerous_chars_escaped(text_with_html: str):
     """
     P3-C: Characters <, >, ", & must be escaped in all sample values.

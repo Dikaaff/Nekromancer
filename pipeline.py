@@ -89,7 +89,14 @@ def run_pipeline(artifact_path: str, n_parity: int = 1000, seed: int | None = No
     # ── 4. PARITY ───────────────────────────────────────────────────
     print(f"\n[4/5] Parity verification ({n_parity} sequences)...")
     format_family = dossier["format"]["family"]
-    report = run_parity(artifact_id, format_family, n_sequences=n_parity, seed=seed)
+    report = run_parity(
+        artifact_id,
+        format_family,
+        n_sequences=n_parity,
+        seed=seed,
+        dossier_path=str(dossier_path),
+        artifact_path=str(pathlib.Path(artifact_path).resolve()),
+    )
     report_path = save_report(report, artifact_id)
 
     passed = sum(1 for p in report["properties"] if p["status"] == "pass")

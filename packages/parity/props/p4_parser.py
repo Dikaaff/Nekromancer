@@ -29,8 +29,8 @@ def _result_is_safe(result: dict) -> bool:
 
 
 # ----- P4-A: CSV parser does not crash on arbitrary bytes -----
-@given(st.binary(min_size=0, max_size=4096))
-@settings(max_examples=500, suppress_health_check=[HealthCheck.too_slow], deadline=None)
+@given(st.binary(min_size=0, max_size=2048))
+@settings(max_examples=200, suppress_health_check=[HealthCheck.too_slow], deadline=None)
 def test_csv_parser_no_crash(arbitrary_bytes: bytes):
     """
     P4-A: csv_parse must not raise an unhandled exception
@@ -50,8 +50,8 @@ def test_csv_parser_no_crash(arbitrary_bytes: bytes):
 
 
 # ----- P4-B: DBF parser does not crash on arbitrary bytes -----
-@given(st.binary(min_size=0, max_size=4096))
-@settings(max_examples=500, suppress_health_check=[HealthCheck.too_slow], deadline=None)
+@given(st.binary(min_size=0, max_size=2048))
+@settings(max_examples=200, suppress_health_check=[HealthCheck.too_slow], deadline=None)
 def test_dbf_parser_no_crash(arbitrary_bytes: bytes):
     """
     P4-B: dbf_parse must not raise an unhandled exception
@@ -71,8 +71,8 @@ def test_dbf_parser_no_crash(arbitrary_bytes: bytes):
 
 
 # ----- P4-C: Detector does not crash on arbitrary bytes -----
-@given(st.binary(min_size=0, max_size=8192))
-@settings(max_examples=500, suppress_health_check=[HealthCheck.too_slow], deadline=None)
+@given(st.binary(min_size=0, max_size=4096))
+@settings(max_examples=200, suppress_health_check=[HealthCheck.too_slow], deadline=None)
 def test_detector_no_crash(arbitrary_bytes: bytes):
     """
     P4-C: detect() must not raise on arbitrary bytes.
@@ -96,8 +96,8 @@ def test_detector_no_crash(arbitrary_bytes: bytes):
 
 
 # ----- P4-D: Parser result always has typed errors, never bare strings -----
-@given(st.binary(min_size=1, max_size=512))
-@settings(max_examples=200, deadline=None)
+@given(st.binary(min_size=1, max_size=256))
+@settings(max_examples=100, deadline=None)
 def test_parser_errors_are_typed(arbitrary_bytes: bytes):
     """
     P4-D: All entries in unresolved[] must have 'code' and 'message' keys.

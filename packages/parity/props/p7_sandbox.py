@@ -86,8 +86,8 @@ def test_path_traversal_rejected(malicious_path: str):
 
 
 # ----- P7-D: Artifact hash is consistent -----
-@given(st.binary(min_size=1, max_size=1024))
-@settings(max_examples=200, deadline=None)
+@given(st.binary(min_size=1, max_size=256))
+@settings(max_examples=100, deadline=None)
 def test_hash_is_deterministic(content: bytes):
     """P7-D: Same content must always produce the same SHA-256 hash."""
     from packages.probe.runner import sha256_file

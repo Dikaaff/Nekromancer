@@ -96,15 +96,45 @@ def handle_run_probe(args: dict) -> dict:
 
 
 def handle_execute_sequence(args: dict) -> dict:
-    """Execute action sequence — simulated for demo, real version uses sandbox."""
+    """Execute an action sequence against the original artifact's data model."""
     artifact_id = args["artifact_id"]
     sequence = args["sequence"]
 
-    # Simulate trace execution (real: Docker sandbox)
     sys.path.insert(0, str(ROOT))
-    from packages.parity.reporter import _simulate_trace
-    trace = _simulate_trace(sequence, side="original", artifact_id=artifact_id)
-    return {"artifact_id": artifact_id, "trace": trace, "steps": len(trace)}
+    from packages.parity import reporter
+
+    dossier_path = ROOT / "dossiers" / artifact_id / "dossier.json"
+    if not dossier_path.exists():
+        return {"error": "DOSSIER_NOT_FOUND", "artifact_id": artifact_id}
+
+    with open(dossier_path, encoding="utf-8") as f:
+        dossier = json.load(f)
+
+    artifact = pathlib.Path(args["artifact_path"]) if args.get("artifact_path") \
+        else reporter._locate_artifact(dossier)
+    artifact = _canonicalize_path(str(artifact))
+    if artifact is None:
+        return {"error": "PATH_NOT_ALLOWED", "message": "Artifact path outside allowed directories"}
+
+    family = dossier.get("format", {}).get("family")
+    if family == "csv":
+        table = reporter._read_csv_table(
+            artifact,
+            encoding=dossier["format"].get("encoding", "utf-8"),
+            delimiter=dossier["format"].get("delimiter", ","),
+        )
+    elif family == "dbf":
+        table = reporter._read_dbf_table(artifact)
+    else:
+        return {"error": "UNSUPPORTED_FORMAT", "format": family}
+
+    trace = reporter._run_sequence(sequence, *table)
+    return {
+        "artifact_id": artifact_id,
+        "source": str(artifact.relative_to(ROOT)),
+        "trace": trace,
+        "steps": len(trace),
+    }
 
 
 def dispatch(tool_name: str, arguments: dict) -> dict:
