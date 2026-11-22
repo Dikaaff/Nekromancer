@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'">
+  <title>sample_inventory.csv — NEKROMANCER Restored</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header role="banner">
+    <h1 id="page-title">sample_inventory.csv</h1>
+    <p class="meta">
+      Format: <span id="format-family"></span> |
+      Confidence: <span id="confidence"></span> |
+      Fields: <span id="field-count"></span>
+    </p>
+    <p class="provenance">
+      Artifact ID: <code>cb46bbe1bdc3ea57</code> |
+      <a href="data.json" download>Download raw data</a> |
+      <a href="parity-report.json" download>Parity report</a>
+    </p>
+  </header>
+
+  <main id="main">
+    
+
+    <section aria-label="sample_inventory records">
+      <h2>sample_inventory</h2>
+      <div class="table-wrapper" role="region" aria-label="Data table" tabindex="0">
+        <table id="data-table" aria-describedby="page-title">
+          <thead>
+            <tr><th data-cite="dossier.json#structure[0]">Kode Barang</th><th data-cite="dossier.json#structure[1]">Nama Barang</th><th data-cite="dossier.json#structure[2]">Kategori</th><th data-cite="dossier.json#structure[3]">Stok</th><th data-cite="dossier.json#structure[4]">Harga Satuan</th><th data-cite="dossier.json#structure[5]">Supplier</th><th data-cite="dossier.json#structure[6]">Tanggal Masuk</th></tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Rows populated by app.js from data.json — never innerHTML -->
+          </tbody>
+        </table>
+      </div>
+      <p id="row-count" aria-live="polite"></p>
+    </section>
+
+    
+
+    <section aria-label="Provenance">
+      <h2>Provenance</h2>
+      <dl>
+        <dt>Artifact</dt><dd id="prov-artifact"></dd>
+        <dt>SHA-256</dt><dd id="prov-sha256" class="monospace"></dd>
+        <dt>Detected by</dt><dd id="prov-detected-by"></dd>
+        <dt>Restored by</dt><dd>NEKROMANCER v1.0</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer>
+    <p>Restored by <strong>NEKROMANCER</strong> — sesuatu yang terkubur tidak harus tetap terkubur.</p>
+    <p>All data displayed from <a href="data.json">data.json</a>. No server required.</p>
+  </footer>
+
+  <script type="application/json" id="payload">{"dossier": {"schema_version": "1.0", "artifact": {"id": "cb46bbe1bdc3ea57", "sha256": "cb46bbe1bdc3ea57d756b6526a7bbfc7ec2fe4b04e11a5c5a80c80d3ff2db32e", "size": 707, "name": "sample_inventory.csv"}, "format": {"family": "csv", "detected_by": "delimiter_heuristic", "confidence": 0.8, "encoding": "utf-8", "delimiter": ","}, "structure": [{"record": "row", "field": "kode_barang", "type": "string", "byte_offset": 0, "nullable": false}, {"record": "row", "field": "nama_barang", "type": "string", "byte_offset": 0, "nullable": false}, {"record": "row", "field": "kategori", "type": "string", "byte_offset": 0, "nullable": false}, {"record": "row", "field": "stok", "type": "integer", "byte_offset": 0, "nullable": false}, {"record": "row", "field": "harga_satuan", "type": "integer", "byte_offset": 0, "nullable": false}, {"record": "row", "field": "supplier", "type": "string", "byte_offset": 0, "nullable": false}, {"record": "row", "field": "tanggal_masuk", "type": "date", "byte_offset": 0, "nullable": false}], "samples": [{"kode_barang": "B001", "nama_barang": "Kertas HVS A4", "kategori": "ATK", "stok": "500", "harga_satuan": "45000", "supplier": "CV Maju Jaya", "tanggal_masuk": "19980115"}, {"kode_barang": "B002", "nama_barang": "Pulpen Pilot", "kategori": "ATK", "stok": "200", "harga_satuan": "3500", "supplier": "PT Alat Tulis", "tanggal_masuk": "19980120"}, {"kode_barang": "B003", "nama_barang": "Komputer 486", "kategori": "Elektronik", "stok": "5", "harga_satuan": "2500000", "supplier": "CV Komputer Nusantara", "tanggal_masuk": "19970310"}, {"kode_barang": "B004", "nama_barang": "Monitor CRT 14\"", "kategori": "Elektronik", "stok": "8", "harga_satuan": "750000", "supplier": "CV Komputer Nusantara", "tanggal_masuk": "19970310"}, {"kode_barang": "B005", "nama_barang": "Disket 3.5\"", "kategori": "Media", "stok": "1000", "harga_satuan": "2500", "supplier": "CV Media Komputer", "tanggal_masuk": "19980101"}, {"kode_barang": "B006", "nama_barang": "Ribbon Dot Matrix", "kategori": "Printer", "stok": "50", "harga_satuan": "35000", "supplier": "PT Printer Jaya", "tanggal_masuk": "19980205"}, {"kode_barang": "B007", "nama_barang": "Tinta Printer HP", "kategori": "Printer", "stok": "30", "harga_satuan": "125000", "supplier": "PT Printer Jaya", "tanggal_masuk": "19990101"}, {"kode_barang": "B008", "nama_barang": "Lemari Arsip", "kategori": "Furnitur", "stok": "10", "harga_satuan": "450000", "supplier": "CV Furnitur Kantor", "tanggal_masuk": "19980601"}, {"kode_barang": "B009", "nama_barang": "Meja Kerja", "kategori": "Furnitur", "stok": "15", "harga_satuan": "350000", "supplier": "CV Furnitur Kantor", "tanggal_masuk": "19980601"}, {"kode_barang": "B010", "nama_barang": "Kursi Putar", "kategori": "Furnitur", "stok": "20", "harga_satuan": "275000", "supplier": "CV Furnitur Kantor", "tanggal_masuk": "19990201"}], "unresolved": [], "warnings": [], "_meta": {"probe_elapsed_seconds": 0.006, "timestamp": "2026-11-21T01:41:46Z"}}, "model": {"schema_version": "1.0", "artifact_id": "cb46bbe1bdc3ea57", "artifact_name": "sample_inventory.csv", "format": "csv", "entities": [{"name": "sample_inventory", "source": "dossier.json#structure", "fields": [{"name": "kode_barang", "type": "string", "nullable": false, "label": "Kode Barang", "cite": "dossier.json#structure[0]"}, {"name": "nama_barang", "type": "string", "nullable": false, "label": "Nama Barang", "cite": "dossier.json#structure[1]"}, {"name": "kategori", "type": "string", "nullable": false, "label": "Kategori", "cite": "dossier.json#structure[2]"}, {"name": "stok", "type": "integer", "nullable": false, "label": "Stok", "cite": "dossier.json#structure[3]"}, {"name": "harga_satuan", "type": "integer", "nullable": false, "label": "Harga Satuan", "cite": "dossier.json#structure[4]"}, {"name": "supplier", "type": "string", "nullable": false, "label": "Supplier", "cite": "dossier.json#structure[5]"}, {"name": "tanggal_masuk", "type": "date", "nullable": false, "label": "Tanggal Masuk", "cite": "dossier.json#structure[6]"}]}], "screens": [{"id": "list", "title": "sample_inventory List", "type": "table", "entity": "sample_inventory", "columns": ["kode_barang", "nama_barang", "kategori", "stok", "harga_satuan", "supplier", "tanggal_masuk"], "cite": "dossier.json#structure[0..6]"}, {"id": "detail", "title": "sample_inventory Detail", "type": "form", "entity": "sample_inventory", "fields": ["kode_barang", "nama_barang", "kategori", "stok", "harga_satuan", "supplier", "tanggal_masuk"], "cite": "dossier.json#structure[0..6]"}], "rules": [{"field": "stok", "rule": "format_number", "cite": "dossier.json#structure[3]"}, {"field": "harga_satuan", "rule": "format_number", "cite": "dossier.json#structure[4]"}, {"field": "tanggal_masuk", "rule": "format_date", "cite": "dossier.json#structure[6]"}], "unresolved": []}}</script>
+  <script src="app.js"></script>
+</body>
+</html>

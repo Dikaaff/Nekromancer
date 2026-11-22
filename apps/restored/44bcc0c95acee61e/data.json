@@ -1,0 +1,251 @@
+{
+  "dossier": {
+    "schema_version": "1.0",
+    "artifact": {
+      "id": "44bcc0c95acee61e",
+      "sha256": "44bcc0c95acee61e79992912ef17f0e67d6c5f798b4c527564bddd6d9bad3172",
+      "size": 631,
+      "name": "sample_contacts.csv"
+    },
+    "format": {
+      "family": "csv",
+      "detected_by": "delimiter_heuristic",
+      "confidence": 0.75,
+      "encoding": "utf-8",
+      "delimiter": ","
+    },
+    "structure": [
+      {
+        "record": "row",
+        "field": "id",
+        "type": "integer",
+        "byte_offset": 0,
+        "nullable": false
+      },
+      {
+        "record": "row",
+        "field": "nama",
+        "type": "string",
+        "byte_offset": 0,
+        "nullable": false
+      },
+      {
+        "record": "row",
+        "field": "kota",
+        "type": "string",
+        "byte_offset": 0,
+        "nullable": false
+      },
+      {
+        "record": "row",
+        "field": "telepon",
+        "type": "string",
+        "byte_offset": 0,
+        "nullable": false
+      },
+      {
+        "record": "row",
+        "field": "email",
+        "type": "string",
+        "byte_offset": 0,
+        "nullable": false
+      },
+      {
+        "record": "row",
+        "field": "tahun_bergabung",
+        "type": "integer",
+        "byte_offset": 0,
+        "nullable": false
+      }
+    ],
+    "samples": [
+      {
+        "id": "1",
+        "nama": "Budi Santoso",
+        "kota": "Jakarta",
+        "telepon": "021-5551234",
+        "email": "budi@example.com",
+        "tahun_bergabung": "1998"
+      },
+      {
+        "id": "2",
+        "nama": "Siti Rahayu",
+        "kota": "Bandung",
+        "telepon": "022-5559876",
+        "email": "siti@example.com",
+        "tahun_bergabung": "1999"
+      },
+      {
+        "id": "3",
+        "nama": "Ahmad Fauzi",
+        "kota": "Surabaya",
+        "telepon": "031-5554321",
+        "email": "ahmad@example.com",
+        "tahun_bergabung": "1997"
+      },
+      {
+        "id": "4",
+        "nama": "Dewi Lestari",
+        "kota": "Yogyakarta",
+        "telepon": "0274-555789",
+        "email": "dewi@example.com",
+        "tahun_bergabung": "2000"
+      },
+      {
+        "id": "5",
+        "nama": "Rudi Hermawan",
+        "kota": "Medan",
+        "telepon": "061-5556543",
+        "email": "rudi@example.com",
+        "tahun_bergabung": "1996"
+      },
+      {
+        "id": "6",
+        "nama": "Rina Susanti",
+        "kota": "Semarang",
+        "telepon": "024-5552109",
+        "email": "rina@example.com",
+        "tahun_bergabung": "1998"
+      },
+      {
+        "id": "7",
+        "nama": "Hendra Gunawan",
+        "kota": "Makassar",
+        "telepon": "0411-555876",
+        "email": "hendra@example.com",
+        "tahun_bergabung": "2001"
+      },
+      {
+        "id": "8",
+        "nama": "Yuni Pratiwi",
+        "kota": "Palembang",
+        "telepon": "0711-555234",
+        "email": "yuni@example.com",
+        "tahun_bergabung": "1999"
+      },
+      {
+        "id": "9",
+        "nama": "Doni Kurniawan",
+        "kota": "Pekanbaru",
+        "telepon": "0761-555678",
+        "email": "doni@example.com",
+        "tahun_bergabung": "2000"
+      },
+      {
+        "id": "10",
+        "nama": "Lia Anggraeni",
+        "kota": "Balikpapan",
+        "telepon": "0542-555123",
+        "email": "lia@example.com",
+        "tahun_bergabung": "1997"
+      }
+    ],
+    "unresolved": [],
+    "warnings": [],
+    "_meta": {
+      "probe_elapsed_seconds": 0.037,
+      "timestamp": "2026-11-21T01:41:27Z"
+    }
+  },
+  "model": {
+    "schema_version": "1.0",
+    "artifact_id": "44bcc0c95acee61e",
+    "artifact_name": "sample_contacts.csv",
+    "format": "csv",
+    "entities": [
+      {
+        "name": "sample_contacts",
+        "source": "dossier.json#structure",
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "nullable": false,
+            "label": "Id",
+            "cite": "dossier.json#structure[0]"
+          },
+          {
+            "name": "nama",
+            "type": "string",
+            "nullable": false,
+            "label": "Nama",
+            "cite": "dossier.json#structure[1]"
+          },
+          {
+            "name": "kota",
+            "type": "string",
+            "nullable": false,
+            "label": "Kota",
+            "cite": "dossier.json#structure[2]"
+          },
+          {
+            "name": "telepon",
+            "type": "string",
+            "nullable": false,
+            "label": "Telepon",
+            "cite": "dossier.json#structure[3]"
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "nullable": false,
+            "label": "Email",
+            "cite": "dossier.json#structure[4]"
+          },
+          {
+            "name": "tahun_bergabung",
+            "type": "integer",
+            "nullable": false,
+            "label": "Tahun Bergabung",
+            "cite": "dossier.json#structure[5]"
+          }
+        ]
+      }
+    ],
+    "screens": [
+      {
+        "id": "list",
+        "title": "sample_contacts List",
+        "type": "table",
+        "entity": "sample_contacts",
+        "columns": [
+          "id",
+          "nama",
+          "kota",
+          "telepon",
+          "email",
+          "tahun_bergabung"
+        ],
+        "cite": "dossier.json#structure[0..5]"
+      },
+      {
+        "id": "detail",
+        "title": "sample_contacts Detail",
+        "type": "form",
+        "entity": "sample_contacts",
+        "fields": [
+          "id",
+          "nama",
+          "kota",
+          "telepon",
+          "email",
+          "tahun_bergabung"
+        ],
+        "cite": "dossier.json#structure[0..5]"
+      }
+    ],
+    "rules": [
+      {
+        "field": "id",
+        "rule": "format_number",
+        "cite": "dossier.json#structure[0]"
+      },
+      {
+        "field": "tahun_bergabung",
+        "rule": "format_number",
+        "cite": "dossier.json#structure[5]"
+      }
+    ],
+    "unresolved": []
+  }
+}

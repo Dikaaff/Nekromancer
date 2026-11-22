@@ -19,7 +19,8 @@ ROOT = pathlib.Path(__file__).parent.parent.parent
 TEMPLATES_DIR = pathlib.Path(__file__).parent / "templates"
 RESTORED_DIR = ROOT / "apps" / "restored"
 
-CSP = "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:"
+CSP = ("default-src 'none'; script-src 'self'; style-src 'self'; "
+       "img-src 'self' data:; connect-src 'self'")
 
 
 def _safe_text(value) -> str:
@@ -46,16 +47,15 @@ def render_site(model_path: str | pathlib.Path, dossier_path: str | pathlib.Path
     out_dir = RESTORED_DIR / artifact_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # Write data layer as separate JSON (FR-12) — not executed
+    payload = _display_payload(model, dossier)
+
+    # Write data layer as separate JSON (FR-12) — data only, never executed
     data_file = out_dir / "data.json"
     with open(data_file, "w", encoding="utf-8") as f:
-        json.dump({
-            "dossier": dossier,
-            "model": model,
-        }, f, indent=2, ensure_ascii=False)
+        json.dump(payload, f, indent=2, ensure_ascii=False)
 
     # Render index.html
-    index_html = _render_index(model, dossier)
+    index_html = _render_index(model, dossier, payload)
     index_path = out_dir / "index.html"
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(index_html)
@@ -69,7 +69,24 @@ def render_site(model_path: str | pathlib.Path, dossier_path: str | pathlib.Path
     return index_path
 
 
-def _render_index(model: dict, dossier: dict) -> str:
+def _display_payload(model: dict, dossier: dict) -> dict:
+    """
+    Build the data payload the browser renders.
+
+    The dossier stores HTML-escaped values on purpose (S-5/S-6): it is an
+    interchange format that may be quoted into prompts or embedded in markup.
+    The browser receives raw values instead, because the generated app inserts
+    every cell with textContent — escaping again would show entities literally.
+    """
+    payload = json.loads(json.dumps({"dossier": dossier, "model": model}, ensure_ascii=False))
+    for row in payload["dossier"].get("samples", []) or []:
+        for key, value in list(row.items()):
+            if isinstance(value, str):
+                row[key] = html.unescape(value)
+    return payload
+
+
+def _render_index(model: dict, dossier: dict, payload: dict) -> str:
     """Render index.html from model."""
     artifact_name = _safe_text(model.get("artifact_name", "Artifact"))
     artifact_id   = _safe_text(model.get("artifact_id", "unknown"))
@@ -117,6 +134,10 @@ def _render_index(model: dict, dossier: dict) -> str:
         f'<ul role="list">{unres_items}</ul></section>'
         if unresolved else ""
     )
+
+    # Inline payload so the page also works from file:// with no server.
+    # type="application/json" is inert data — it is never executed as script.
+    payload_json = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -180,6 +201,7 @@ def _render_index(model: dict, dossier: dict) -> str:
     <p>All data displayed from <a href="data.json">data.json</a>. No server required.</p>
   </footer>
 
+  <script type="application/json" id="payload">{payload_json}</script>
   <script src="app.js"></script>
 </body>
 </html>
@@ -329,12 +351,27 @@ def _write_js(out_dir: pathlib.Path, model: dict):
 
     js = f"""// NEKROMANCER restored app — app.js
 // Security: all DOM insertion uses textContent. No innerHTML, no eval.
-// CSP: default-src 'none'; script-src 'self'
+// CSP: default-src 'none'; script-src 'self'; connect-src 'self'
 'use strict';
 
 const FIELDS = {fields_json};
 
+function readInlinePayload() {{
+  // The page ships with an inert JSON payload so it also runs from file://
+  const el = document.getElementById('payload');
+  if (!el || !el.textContent) return null;
+  try {{
+    return JSON.parse(el.textContent);
+  }} catch (err) {{
+    console.error('Inline payload unreadable:', err.message);
+    return null;
+  }}
+}}
+
 async function loadData() {{
+  const inline = readInlinePayload();
+  if (inline) return inline;
+
   try {{
     const response = await fetch('data.json');
     if (!response.ok) throw new Error('Failed to load data.json');
