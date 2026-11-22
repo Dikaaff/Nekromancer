@@ -138,7 +138,7 @@ dossiers/         probe output
 ledger/           provenance chain
 ```
 
-Directory ownership is enforced by Kiro agent permissions, not by convention — see [`.kiro/agents/`](.kiro/agents/) and [AGENTS.md](AGENTS.md).
+Directory ownership is enforced by Kiro agent permissions, not by convention — see [`.kiro/agents/`](.kiro/agents/) and [agents.md](agents.md).
 
 ## How Kiro is used
 
